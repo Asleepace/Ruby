@@ -18,7 +18,6 @@
 def longest_palindrome(input)
   string = input.gsub(" ","")                           # removes spaces
   string.downcase!                                      # convert to lowercase
-  return input if is_palindrome?(input)                 # check if input is palindrome
   length = string.length                                # get string length
   search = length - 1                                   # search window size
   while search > 1                                      # check all sub-string lengths down to 1
@@ -36,7 +35,7 @@ def is_palindrome?(string)
   return false if string.length < 2                     # check string size
   array = string.chars                                  # string character array
   n = array.length-1                                    # last string character
-  for i in 0...n
+  for i in 0..(n/2)
     return false if array[i] != array[n-i]              # check if string is mirror image
   end
   return true                                           # palindrome if all tests passed
